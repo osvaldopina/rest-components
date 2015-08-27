@@ -1,0 +1,1 @@
+INSERT INTO CON_CONTA (CON_ID,CON_CD,CON_NM,CON_DS,CON_DS_BASE_NORMATIVA) VALUES (1,'1','PATRIMONIO DE REFERENCIA PARA COMPARACAO COM O RWA (101=100-105-107)', 'Valor do PR para fins de verificacao do cumprimento do requrimento, em relacao ao RWA','');
