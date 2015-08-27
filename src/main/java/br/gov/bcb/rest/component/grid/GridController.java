@@ -2,7 +2,6 @@ package br.gov.bcb.rest.component.grid;
 
 import br.gov.bcb.rest.component.grid.domain.Conta;
 import br.gov.bcb.rest.component.grid.domain.ContaRepository;
-import com.sun.xml.internal.bind.v2.runtime.reflect.Lister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +29,13 @@ public class GridController {
 
     @RequestMapping("/grid")
     @ResponseBody
-    public ResponseEntity<GridInstance>  grid(@RequestParam("columns")List<String> columns) {
+    public ResponseEntity<GridInstance>  grid(@RequestParam("columns")List<String> columns,@RequestParam(value = "sortBy", required = false) String sortBy) {
 
         Iterable<Conta>  contas = contaRepository.findAll();
 
         List<Row> rows = new ArrayList<>();
         for(Conta conta:contas) {
-            rows.add(new Row(conta.getId().toString(), conta.getCodigo(), conta.getNome(), conta.getDescricao(), conta.getBaseNormativa()));
+            rows.add(new Row(conta.getId(), conta.getCodigo(), conta.getNome(), conta.getDescricao(), conta.getBaseNormativa()));
         }
 
         return  new ResponseEntity<GridInstance>(new GridInstance(gridDefinition,new GridData(rows)), HttpStatus.OK);

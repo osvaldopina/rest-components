@@ -17,10 +17,10 @@ public class MyGridDefinition implements GridDefinition {
     private List<Column> columns = new ArrayList<>();
 
     public MyGridDefinition() {
-        columns.add(new Column("codigo", "Codigo", "Codigo Conta", true));
-        columns.add(new Column("nome", "Nome", "Nome Conta", true));
-        columns.add(new Column("descricao", "Descricao", "Descricao Conta", true));
-        columns.add(new Column("baseNormativa", "Base Normativa", "Base Normativa", true));
+//        columns.add(new Column("codigo", "Codigo", "Codigo Conta", true));
+//        columns.add(new Column("nome", "Nome", "Nome Conta", true));
+//        columns.add(new Column("descricao", "Descricao", "Descricao Conta", true));
+//        columns.add(new Column("baseNormativa", "Base Normativa", "Base Normativa", true));
     }
 
 

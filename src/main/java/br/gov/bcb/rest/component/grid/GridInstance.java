@@ -3,7 +3,7 @@ package br.gov.bcb.rest.component.grid;
 /**
  * Created by deinf.osvaldo on 26/08/2015.
  */
-public class GridInstance {
+public class    GridInstance {
 
     private GridDefinition gridDefinition;
 

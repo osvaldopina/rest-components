@@ -2,6 +2,7 @@ package br.gov.bcb.rest.component.grid;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,14 +11,17 @@ import java.util.List;
  */
 public class Row {
 
-    private List<String> cells;
+    private List<String> cells = new ArrayList<>();
 
     public Row(List<String> cells) {
-        this.cells = cells;
+        this.cells.addAll(cells);
     }
 
-    public Row(String ... cells) {
-        this.cells = Arrays.asList(cells);
+    public Row(Object ... values) {
+
+        for(Object value:values) {
+            cells.add(value.toString());
+        }
     }
 
     @JsonValue

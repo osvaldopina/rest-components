@@ -5,8 +5,10 @@ import java.util.List;
 /**
  * Created by deinf.osvaldo on 26/08/2015.
  */
-public interface GridDefinition {
+public interface GridDefinition<T> {
 
     List<Column> getColumns();
+
+
 
 }
