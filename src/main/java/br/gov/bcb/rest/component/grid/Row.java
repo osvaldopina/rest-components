@@ -11,21 +11,14 @@ import java.util.List;
  */
 public class Row {
 
-    private List<String> cells = new ArrayList<>();
+    private List<Cell> cells = new ArrayList<>();
 
-    public Row(List<String> cells) {
+    public Row(List<Cell> cells) {
         this.cells.addAll(cells);
     }
 
-    public Row(Object ... values) {
-
-        for(Object value:values) {
-            cells.add(value.toString());
-        }
-    }
-
     @JsonValue
-    public List<String> getCells() {
+    public List<Cell> getCells() {
         return cells;
     }
 }

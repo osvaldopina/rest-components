@@ -1,9 +1,11 @@
 package br.gov.bcb.rest.component.grid;
 
+import org.springframework.hateoas.ResourceSupport;
+
 /**
  * Created by deinf.osvaldo on 26/08/2015.
  */
-public class    GridInstance {
+public class  GridInstance extends ResourceSupport {
 
     private GridDefinition gridDefinition;
 
