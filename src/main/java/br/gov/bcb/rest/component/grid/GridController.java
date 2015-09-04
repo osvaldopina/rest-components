@@ -8,6 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -37,7 +40,7 @@ public class GridController {
 
     @RequestMapping("/grid")
     @ResponseBody
-    public ResponseEntity<GridInstance> grid(
+    public ResponseEntity<Resource<GridInstance>> grid(
             @RequestParam("columns") List<String> columns,
             @RequestParam(value = "page", required = false) Integer page,
             @RequestParam(value = "size", required = false) Integer pageSize,
@@ -96,7 +99,16 @@ public class GridController {
         if (pageInfo == null) {
             pageInfo = new PageInfo(totalElements, totalElements, 1, 0);
         }
-        return new ResponseEntity<GridInstance>(new GridInstance(gridDefinition, new GridData(rows, pageInfo)), HttpStatus.OK);
+        GridInstance gridInstance = new GridInstance(gridDefinition, new GridData(rows, pageInfo));
+
+        Resource<GridInstance> resource = new Resource<>(gridInstance);
+
+         Link self  = ControllerLinkBuilder.linkTo(GridController.class).slash('/').withSelfRel();
+
+        resource.add(self);
+
+
+        return new ResponseEntity<Resource<GridInstance>>(resource , HttpStatus.OK);
 
     }
 
